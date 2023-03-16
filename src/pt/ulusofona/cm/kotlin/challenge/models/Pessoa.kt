@@ -62,15 +62,22 @@ class Pessoa(
     fun tirarCarta() {
 
     }
+    var newDate: String = "dd-MM-yyyy",
 
-
+    fun formatarData( date: Date): String{
+        var data: Calendar = Calendar.getInstance()
+        data.time = date
+        newDate =  "${data.get(Calendar.DATE)}-" +
+                "${data.get(Calendar.MONTH) + 1}-" +
+                "${data.get(Calendar.YEAR)}"
+    }
 
     override fun moverPara(x: Int, y: Int) {
         posicao.alterarPosicaoPara(x, y)
     }
 
     override fun toString(): String {
-        return "Pessoa | $nome | $dataDeNascimento  | Posicao | x:${posicao.x} | y:${posicao.y}"    }
+        return "Pessoa | $nome | $newDate  | Posicao | x:${posicao.x} | y:${posicao.y}"    }
 
 
 }
