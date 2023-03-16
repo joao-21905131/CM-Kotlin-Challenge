@@ -62,9 +62,9 @@ class Pessoa(
     fun tirarCarta() {
 
     }
-    var newDate: String = "dd-MM-yyyy",
+    var newDate: String = "dd-MM-yyyy"
 
-    fun formatarData( date: Date): String{
+    fun formatarData( date: Date){
         var data: Calendar = Calendar.getInstance()
         data.time = date
         newDate =  "${data.get(Calendar.DATE)}-" +
