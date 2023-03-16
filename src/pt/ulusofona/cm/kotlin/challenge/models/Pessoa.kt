@@ -7,12 +7,15 @@ import pt.ulusofona.cm.kotlin.challenge.interfaces.Movimentavel
 import java.time.LocalDate
 import java.time.Period
 import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 
 class Pessoa(
     val nome: String,
-    val dataDeNascimento: Date
+    var formatter: DateTimeFormatter? = DateTimeFormatter.ofPattern("dd-MM-yyyy"),
+    var dataDeNascimento: String = LocalDate.parse("01-01-1990", formatter).toString()
+
 ) : Movimentavel {
 
     var veiculos: ArrayList<Veiculo> = ArrayList()
@@ -49,7 +52,7 @@ class Pessoa(
     }
 
     fun moverVeiculoPara(identificador: String, x: Int, y: Int) {
-        if (pesquisarVeiculo(identificador).requerCarta() && calculaIdade() <= 17){
+        if (pesquisarVeiculo(identificador).requerCarta() ){
             throw PessoaSemCartaException(nome)
         }
 
@@ -60,16 +63,11 @@ class Pessoa(
         return this::carta.isInitialized
     }
 
-    fun calculaIdade(): Int {
-        return Period.between(
-            dataDeNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-            LocalDate.now()
-        ).years
-    }
+
 
     fun tirarCarta() {
-        if (calculaIdade() <= 17)
-            throw MenorDeIdadeException()
+
+
 
     }
 
