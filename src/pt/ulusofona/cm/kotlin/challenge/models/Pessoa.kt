@@ -83,7 +83,6 @@ class Pessoa(
     }
 
     override fun toString(): String {
-        formatarData(dataDeNascimento)
         return "Pessoa | $nome | $dataDeNascimento | Posicao | x:${posicao.x} | y:${posicao.y}"    }
 
 
