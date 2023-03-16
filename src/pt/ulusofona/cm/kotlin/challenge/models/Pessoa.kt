@@ -3,6 +3,7 @@ package pt.ulusofona.cm.kotlin.challenge.models
 import pt.ulusofona.cm.kotlin.challenge.exceptions.PessoaSemCartaException
 import pt.ulusofona.cm.kotlin.challenge.exceptions.VeiculoNaoEncontradoException
 import pt.ulusofona.cm.kotlin.challenge.interfaces.Movimentavel
+import java.text.SimpleDateFormat
 
 import java.util.*
 
@@ -62,12 +63,12 @@ class Pessoa(
     fun tirarCarta() {
 
     }
-    var newDate: String = "dd-MM-yyyy"
+    var formatoNovaData: String = "dd-MM-yyyy"
 
     fun formatarData( date: Date){
         var data: Calendar = Calendar.getInstance()
         data.time = date
-        newDate =  "${data.get(Calendar.DATE)}-" +
+        formatoNovaData =  "${data.get(Calendar.DATE)}-" +
                 "${data.get(Calendar.MONTH) + 1}-" +
                 "${data.get(Calendar.YEAR)}"
     }
@@ -77,8 +78,10 @@ class Pessoa(
     }
 
     override fun toString(): String {
-        formatarData(dataDeNascimento)
-        return "Pessoa | $nome | $newDate  | Posicao | x:${posicao.x} | y:${posicao.y}"    }
+      //  formatarData(dataDeNascimento)
+        val formato = SimpleDateFormat(formatoNovaData)
+        val dataNova = formato.format(dataDeNascimento)
+        return "Pessoa | $nome | $dataNova  | Posicao | x:${posicao.x} | y:${posicao.y}"    }
 
 
 }
