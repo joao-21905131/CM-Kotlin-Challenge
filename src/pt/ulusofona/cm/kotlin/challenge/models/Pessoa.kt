@@ -14,9 +14,7 @@ import java.util.*
 class Pessoa(
     val nome: String,
     val newDate: String,
- //   var formatter: DateTimeFormatter? = DateTimeFormatter.ofPattern("dd-MM-yyyy"),
-//    var dataDeNascimento: String = LocalDate.parse("01-01-1990", formatter).toString()
-    val dataDeNascimento: Date
+    var dataDeNascimento: Date
 ) : Movimentavel {
 
     var veiculos: ArrayList<Veiculo> = ArrayList()
@@ -83,7 +81,7 @@ class Pessoa(
     }
 
     override fun toString(): String {
-        return "Pessoa | $nome | ${formatarData(dataDeNascimento)}  | Posicao | x:${posicao.x} | y:${posicao.y}"    }
+        return "Pessoa | $nome | $dataDeNascimento  | Posicao | x:${posicao.x} | y:${posicao.y}"    }
 
 
 }
