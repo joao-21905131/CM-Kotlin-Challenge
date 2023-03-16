@@ -5,9 +5,7 @@ import pt.ulusofona.cm.kotlin.challenge.exceptions.VeiculoLigadoException
 import pt.ulusofona.cm.kotlin.challenge.interfaces.Ligavel
 
 class Carro(
-    override val identificador: String,
-    val motor: Motor
-) : Veiculo(identificador), Ligavel {
+    override val identificador: String, val motor: Motor) : Veiculo(identificador), Ligavel {
 
     override var posicao: Posicao = Posicao(0, 0)
 
@@ -21,7 +19,6 @@ class Carro(
         if (ligado){
             throw VeiculoLigadoException()
         }
-
         motor.ligar()
         ligado = true
     }
@@ -46,6 +43,6 @@ class Carro(
         super.moverPara(x, y)
     }
     override fun toString(): String {
-        return "Carro | $identificador | ${DateFormatter.formatter(dataDeAquisicao)} | $posicao"
+        return "Carro | $identificador | $dataDeAquisicao | Posicao | x:${posicao.x} | y:${posicao.y}"
     }
 }

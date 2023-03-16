@@ -23,7 +23,7 @@ class Pessoa(
     fun comprarVeiculo(veiculo: Veiculo) {
         veiculos.add(veiculo)
 
-        veiculo.dataDeAquisicao = Date()
+        veiculo.dataDeAquisicao = Date().toString()
     }
 
     fun pesquisarVeiculo(identificador: String): Veiculo {
@@ -71,7 +71,6 @@ class Pessoa(
         if (calculaIdade() <= 17)
             throw MenorDeIdadeException()
 
-        carta = Carta()
     }
 
     override fun moverPara(x: Int, y: Int) {
@@ -79,8 +78,7 @@ class Pessoa(
     }
 
     override fun toString(): String {
-        return "Pessoa | $nome | ${DateFormatter.formatter(dataDeNascimento)} | $posicao"
-    }
+        return "Pessoa | $nome | $dataDeNascimento | Posicao | x:${posicao.x} | y:${posicao.y}"    }
 
 
 }
