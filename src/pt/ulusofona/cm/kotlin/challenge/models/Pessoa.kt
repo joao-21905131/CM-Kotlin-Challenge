@@ -67,8 +67,14 @@ class Pessoa(
 
     fun tirarCarta() {
 
+    }
 
-
+    fun formatarData( date: Date): String{
+        var data: Calendar = Calendar.getInstance()
+        data.time = date
+        return "${data.get(Calendar.DATE)}-" +
+                "${data.get(Calendar.MONTH) + 1}-" +
+                "${data.get(Calendar.YEAR)}"
     }
 
     override fun moverPara(x: Int, y: Int) {
@@ -76,7 +82,11 @@ class Pessoa(
     }
 
     override fun toString(): String {
-        return "Pessoa | $nome | $dataDeNascimento | Posicao | x:${posicao.x} | y:${posicao.y}"    }
+        return "Pessoa | $nome | ${formatarData(dataDeNascimento)}  | Posicao | x:${posicao.x} | y:${posicao.y}"    }
 
+
+}
+
+private fun Date.get(date: Int): String {
 
 }
