@@ -63,25 +63,18 @@ class Pessoa(
     fun tirarCarta() {
 
     }
-    var formatoNovaData: String = "dd-MM-yyyy"
 
-    fun formatarData( date: Date){
-        var data: Calendar = Calendar.getInstance()
-        data.time = date
-        formatoNovaData =  "${data.get(Calendar.DATE)}-" +
-                "${data.get(Calendar.MONTH) + 1}-" +
-                "${data.get(Calendar.YEAR)}"
-    }
+
 
     override fun moverPara(x: Int, y: Int) {
         posicao.alterarPosicaoPara(x, y)
     }
 
     override fun toString(): String {
-      //  formatarData(dataDeNascimento)
+        val formatoNovaData = "dd-MM-yyyy"
         val formato = SimpleDateFormat(formatoNovaData)
         val dataNova = formato.format(dataDeNascimento)
-        return "Pessoa | $nome | $dataNova  | Posicao | x:${posicao.x} | y:${posicao.y}"    }
+        return "Pessoa | $nome | $dataNova | Posicao | x:${posicao.x} | y:${posicao.y}"    }
 
 
 }
