@@ -67,15 +67,7 @@ class Pessoa(
     fun tirarCarta() {
 
     }
-
-    fun formatarData( date: Date): String{
-        var data: Calendar = Calendar.getInstance()
-        data.time = date
-        return "${data.get(Calendar.DATE)}-" +
-                "${data.get(Calendar.MONTH) + 1}-" +
-                "${data.get(Calendar.YEAR)}"
-    }
-
+    
     override fun moverPara(x: Int, y: Int) {
         posicao.alterarPosicaoPara(x, y)
     }
